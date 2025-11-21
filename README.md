@@ -28,3 +28,6 @@ Sprinklers are to be placed on the ceiling 2500mm away from the walls and from e
 For each sprinkler calculate coordinates (x, y, z) of the connection point to the nearest water pipe.
 
 Implement your solution using C# programming language and .Net Core framework.
+
+Solution plotted in 3D:
+<img width="1600" height="1580" alt="plotting" src="https://github.com/user-attachments/assets/0c64d50b-f583-44a3-9258-3bf9e5fe4167" />
