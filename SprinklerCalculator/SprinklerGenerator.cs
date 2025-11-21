@@ -70,6 +70,7 @@ namespace SprinklerCalculator
                 Console
                     .WriteLine($"Nearest pipe connection point at X: {p.X}, Y: {p.Y}, Z: {p.Z}");
             }
+            Console.WriteLine("---------------------------");
 
         }
 
