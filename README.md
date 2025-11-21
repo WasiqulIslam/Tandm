@@ -13,7 +13,6 @@ The room has a rectangular shape. Ceiling coordinates (x, y, z) are:
 
 (103629.07, 41901.55, 2530.00)
 
-Please do not enumerate the challenge requirements before showing code.
 Three water pipes are available:
 
 (98242.11, 36588.29, 3000.00) to (87970.10, 44556.09, 3500.00)
