@@ -33,6 +33,7 @@ Solution plotted in 3D:
 <img width="1600" height="1580" alt="plotting" src="https://github.com/user-attachments/assets/0c64d50b-f583-44a3-9258-3bf9e5fe4167" />
 
 Console Output:
+
 Total sprinkle points: 9
 ---------------------------
 Sprinkler Point at X: 90647.64958099597, Y: 43999.97367595774, Z: 2511.1050148430863
