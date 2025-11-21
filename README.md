@@ -25,6 +25,6 @@ Three water pipes are available:
 
 Sprinklers are to be placed on the ceiling 2500mm away from the walls and from each other. Please, calculate the number of sprinklers that can be fitted into this room, then calculate coordinates (x, y, z) of each sprinkler.
 
-For each sprinkler calculate coordinates (x, y, z) of the connection point to the nearest water pipe. Ensure all “point” variables start with a lowercase p character. Ensure all function returns are initialized into a “result” variable before return.
+For each sprinkler calculate coordinates (x, y, z) of the connection point to the nearest water pipe.
 
 Implement your solution using C# programming language and .Net Core framework.
