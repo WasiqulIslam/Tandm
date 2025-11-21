@@ -7,26 +7,26 @@ namespace SprinklerCalculator
     {
 
         private const double Tolerance = 1e-6; // Epsilon for plane distance check
-        private const int MIN_DISTANCE = 500;
+        private const int MIN_DISTANCE = 2500;
 
         //use only x and y values for 2D polygon check, z remains same for all points
-        public bool IsPointInPolygonWithDistanceFromWalls(Point sprinklePoint, 
+        public bool IsPointInPolygonWithDistanceFromWalls(Point sprinklePoint,
             List<Point> roomTopCornersWithSameHeight)
         {
 
-            if( IsPointOutsideConvexPlanarQuad(sprinklePoint,
+            if (IsPointOutsideConvexPlanarQuad(sprinklePoint,
                 roomTopCornersWithSameHeight[0],
                 roomTopCornersWithSameHeight[1],
                 roomTopCornersWithSameHeight[2],
                 roomTopCornersWithSameHeight[3]))
-            { 
+            {
                 return false;
             }
 
             double distanceFromWall =
                 CalculateDistance(sprinklePoint,
                     roomTopCornersWithSameHeight[0], roomTopCornersWithSameHeight[1]);
-            if(distanceFromWall < MIN_DISTANCE)
+            if (distanceFromWall < MIN_DISTANCE)
             {
                 return false;
             }
@@ -68,39 +68,34 @@ namespace SprinklerCalculator
 
         private Point GetClosestPointOnLineSegment(Point a, Point b, Point p)
         {
-            // 1. Vector from A to P
-            Point ap = new Point ( p.X - a.X, p.Y - a.Y, a.Z );
+            // Compute full 3D vectors
+            Point ap = Point.Subtract(p, a); //vector AP
+            Point ab = Point.Subtract(b, a); //vector AB
 
-            // 2. Vector from A to B (the line direction vector)
-            Point ab = new Point ( b.X - a.X, b.Y - a.Y, a.Z );
+            // Squared length of AB
+            double magnitudeAB_Squared = ab.X * ab.X + ab.Y * ab.Y + ab.Z * ab.Z;
 
-            // Calculate squared length of AB vector: |AB|^2
-            double magnitudeAB_Squared = ab.X * ab.X + ab.Y * ab.Y;
-
-            // If A and B are the same point, return A
-            if (magnitudeAB_Squared == 0)
+            // If A and B are effectively the same point, return A
+            if (magnitudeAB_Squared <= Tolerance)
             {
                 return a;
             }
 
-            // Calculate the dot product (AP . AB)
-            double dotProduct = ap.X * ab.X + ap.Y * ab.Y;
+            // Dot product (AP . AB)
+            double dotProduct = Point.DotProduct(ap, ab);
 
-            // 3. Calculate the parameter t
+            // Parameter t = projection factor of AP onto AB
             double t = dotProduct / magnitudeAB_Squared;
 
-            // Clamp t to the [0, 1] range for a line segment
-            // t < 0: Closest point is A
-            // t > 1: Closest point is B
-            // 0 <= t <= 1: Closest point is on the segment
-            t = Math.Clamp(t, 0f, 1f);
+            // Clamp t to [0,1] for segment
+            t = Math.Clamp(t, 0.0, 1.0);
 
-            // 4. Calculate the closest point C
+            // Closest point C = A + AB * t
             Point c = new Point
             (
                 a.X + ab.X * t,
                 a.Y + ab.Y * t,
-                a.Z
+                a.Z + ab.Z * t
             );
 
             return c;
@@ -147,24 +142,24 @@ namespace SprinklerCalculator
 
         public Point GetNearestConnectionPoint(Point sprinklePoint, List<Pipe> pipes)
         {
-            
+
             double minDistance = double.MaxValue;
             Point? selectedPoint = null;
-            foreach(Pipe pipe in pipes)
+            foreach (Pipe pipe in pipes)
             {
                 Point closestPoint = GetClosestPointOnLineSegment(
-                    pipe.StartPoint, 
-                    pipe.EndPoint, 
+                    pipe.StartPoint,
+                    pipe.EndPoint,
                     sprinklePoint);
                 double distance = Point.CalculateDistance(sprinklePoint, closestPoint);
-                if(distance < minDistance)
+                if (distance < minDistance)
                 {
                     minDistance = distance;
                     selectedPoint = closestPoint;
                 }
             }
 
-            if(selectedPoint == null)
+            if (selectedPoint == null)
             {
                 throw new Exception("No connection point found.");
             }
@@ -173,7 +168,7 @@ namespace SprinklerCalculator
         }
 
         // Determines if a point Q is outside the planar, convex polygon defined by P1, P2, P3, P4
-        public bool IsPointOutsideConvexPlanarQuad(Point point, 
+        public bool IsPointOutsideConvexPlanarQuad(Point point,
             Point c1, Point c2, Point c3, Point c4)
         {
             // 1. Calculate the plane's normal vector N
