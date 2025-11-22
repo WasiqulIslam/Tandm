@@ -30,38 +30,57 @@ Implement your solution using C# programming language and .Net Core framework.
 
 Solution plotted in 3D:
 ---------------------------
-<img width="1600" height="1580" alt="plotting" src="https://github.com/user-attachments/assets/0c64d50b-f583-44a3-9258-3bf9e5fe4167" />
+<img width="1000" height="800" alt="final" src="https://github.com/user-attachments/assets/603d4e31-f5ea-498c-a42e-7ca0730c93b5" />
+
 
 Console Output:
 
-Total sprinkle points: 9
+Total sprinkle points: 15
 ---------------------------
-Sprinkler Point at X: 90647.64958099597, Y: 43999.97367595774, Z: 2511.1050148430863
-Nearest pipe connection point at X: 91425.69883575261, Y: 45039.58279737643, Z: 3093.619887234953
+Sprinkler Point at X: 89155.31345580675, Y: 43636.71172030407, Z: 2507.4999282238928
+Nearest pipe connection point at X: 89183.69587130517, Y: 43614.72709406579, Z: 3440.927049754373
 ---------------------------
-Sprinkler Point at X: 93147.6520252992, Y: 41499.97682713698, Z: 2509.7756638305736
-Nearest pipe connection point at X: 92705.81310141784, Y: 40882.68870371261, Z: 3269.4845944747995
+Sprinkler Point at X: 90687.56879177692, Y: 45612.08031553838, Z: 2514.999856447786
+Nearest pipe connection point at X: 90671.12705687068, Y: 45624.8888352461, Z: 3056.8903776802536
 ---------------------------
-Sprinkler Point at X: 93147.64112885129, Y: 43999.96277950983, Z: 2515.7017714758194
-Nearest pipe connection point at X: 92984.39478843194, Y: 43830.53393305496, Z: 3169.4909169885905
+Sprinkler Point at X: 92219.8241277471, Y: 47587.44891077269, Z: 2522.4997846716788
+Nearest pipe connection point at X: 92219.92757751822, Y: 47587.58227499455, Z: 3000
 ---------------------------
-Sprinkler Point at X: 93147.63023240337, Y: 46499.948731882665, Z: 2521.6278791210652
-Nearest pipe connection point at X: 93325.86028869216, Y: 46729.717367540004, Z: 3000
+Sprinkler Point at X: 91130.70157564334, Y: 42104.44484537382, Z: 2507.4999282238928
+Nearest pipe connection point at X: 91156.16440377072, Y: 42084.7213042565, Z: 3344.915240358474
 ---------------------------
-Sprinkler Point at X: 95647.65446960244, Y: 38999.97997831622, Z: 2508.446312818061
-Nearest pipe connection point at X: 95473.34947729354, Y: 38735.964125397135, Z: 3134.77209050159
+Sprinkler Point at X: 92662.95691161351, Y: 44079.81344060813, Z: 2514.999856447786
+Nearest pipe connection point at X: 92643.5965165446, Y: 44094.88424645626, Z: 3152.902232208915
 ---------------------------
-Sprinkler Point at X: 95647.64357315452, Y: 41499.96593068906, Z: 2514.3724204633068
-Nearest pipe connection point at X: 95751.85157261392, Y: 41683.873786653494, Z: 3304.199546759296
+Sprinkler Point at X: 94195.21224758368, Y: 46055.182035842445, Z: 2522.4997846716788
+Nearest pipe connection point at X: 94195.30164612332, Y: 46055.29728565445, Z: 3000
 ---------------------------
-Sprinkler Point at X: 95647.6326767066, Y: 43999.951883061905, Z: 2520.2985281085525
-Nearest pipe connection point at X: 96097.4357867254, Y: 44579.82403849673, Z: 3000
+Sprinkler Point at X: 93106.08969547992, Y: 40572.177970443576, Z: 2507.4999282238928
+Nearest pipe connection point at X: 93128.63293623626, Y: 40554.7155144472, Z: 3248.9034309625745
 ---------------------------
-Sprinkler Point at X: 98147.64601745775, Y: 38999.9690818683, Z: 2513.043069450794
-Nearest pipe connection point at X: 98519.30835679588, Y: 39537.213640252034, Z: 3438.9081765300016
+Sprinkler Point at X: 94638.3450314501, Y: 42547.54656567788, Z: 2514.999856447786
+Nearest pipe connection point at X: 94616.0659762185, Y: 42564.87965766642, Z: 3248.914086737576
 ---------------------------
-Sprinkler Point at X: 98147.63512100984, Y: 41499.955034241146, Z: 2518.96917709604
-Nearest pipe connection point at X: 98869.01128475866, Y: 42429.93070945345, Z: 3000
+Sprinkler Point at X: 96170.60036742027, Y: 44522.9151609122, Z: 2522.4997846716788
+Nearest pipe connection point at X: 96170.67571472841, Y: 44523.01229631435, Z: 3000
+---------------------------
+Sprinkler Point at X: 95081.47781531651, Y: 39039.91109551333, Z: 2507.4999282238928
+Nearest pipe connection point at X: 95101.1014687018, Y: 39024.709724637905, Z: 3152.891621566675
+---------------------------
+Sprinkler Point at X: 96613.73315128668, Y: 41015.27969074764, Z: 2514.999856447786
+Nearest pipe connection point at X: 96588.5354358924, Y: 41034.87506887658, Z: 3344.925941266237
+---------------------------
+Sprinkler Point at X: 98145.98848725685, Y: 42990.64828598195, Z: 2522.4997846716788
+Nearest pipe connection point at X: 98146.04978333351, Y: 42990.727306974244, Z: 3000
+---------------------------
+Sprinkler Point at X: 97056.8659351531, Y: 37507.64422058308, Z: 2507.4999282238928
+Nearest pipe connection point at X: 97073.57000116735, Y: 37494.70393482861, Z: 3056.879812170776
+---------------------------
+Sprinkler Point at X: 98589.12127112327, Y: 39483.01281581739, Z: 2514.999856447786
+Nearest pipe connection point at X: 98561.00489556631, Y: 39504.87048008674, Z: 3440.937795794898
+---------------------------
+Sprinkler Point at X: 100121.37660709344, Y: 41458.381411051705, Z: 2522.4997846716788
+Nearest pipe connection point at X: 100121.4238519386, Y: 41458.442317634144, Z: 3000
 ---------------------------
 
 
