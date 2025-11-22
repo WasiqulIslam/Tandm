@@ -22,6 +22,13 @@ namespace SprinklerCalculator
             Z = z;
         }
 
+        public static Point Add(Point a, Point b)
+        {
+            double x = a.X + b.X;
+            double y = a.Y + b.Y;
+            double z = a.Z + b.Z;
+            return new Point(x, y, z);
+        }
 
         public static Point Subtract(Point a, Point b)
         {
@@ -65,6 +72,24 @@ namespace SprinklerCalculator
         public static double Magnitude(Point v)
         {
             return Math.Sqrt(v.X * v.X + v.Y * v.Y + v.Z * v.Z);
+        }
+
+        public static Point GetDirectionVector(Point A, Point B, 
+            double desiredLength) //desiredLength can be 2500
+        {
+            // Step 1: Compute vector
+            Point vector = Point.Subtract(B, A);
+
+            // Step 2: Compute magnitude
+            double magnitude = Point.Magnitude(vector);
+
+            if (magnitude == 0)
+                throw new Exception("Points A and B are identical; direction vector undefined.");
+
+            // Step 3: Normalize and scale
+            double scale = desiredLength / magnitude;
+
+            return Point.Multiply(vector, scale);
         }
 
     }

@@ -8,6 +8,7 @@ namespace SprinklerCalculator
 
         private const double Tolerance = 1e-6; // Epsilon for plane distance check
         private const int MIN_DISTANCE = 2500;
+        private const double Threshold = 0.01;
 
         //use only x and y values for 2D polygon check, z remains same for all points
         public bool IsPointInPolygonWithDistanceFromWalls(Point sprinklePoint,
@@ -26,7 +27,7 @@ namespace SprinklerCalculator
             double distanceFromWall =
                 CalculateDistance(sprinklePoint,
                     roomTopCornersWithSameHeight[0], roomTopCornersWithSameHeight[1]);
-            if (distanceFromWall < MIN_DISTANCE)
+            if (distanceFromWall < (MIN_DISTANCE - Threshold))
             {
                 return false;
             }
@@ -34,7 +35,7 @@ namespace SprinklerCalculator
             distanceFromWall =
                 CalculateDistance(sprinklePoint,
                     roomTopCornersWithSameHeight[1], roomTopCornersWithSameHeight[2]);
-            if (distanceFromWall < MIN_DISTANCE)
+            if (distanceFromWall < (MIN_DISTANCE- Threshold))
             {
                 return false;
             }
@@ -42,7 +43,7 @@ namespace SprinklerCalculator
             distanceFromWall =
                 CalculateDistance(sprinklePoint,
                     roomTopCornersWithSameHeight[2], roomTopCornersWithSameHeight[3]);
-            if (distanceFromWall < MIN_DISTANCE)
+            if (distanceFromWall < (MIN_DISTANCE - Threshold))
             {
                 return false;
             }
@@ -50,7 +51,7 @@ namespace SprinklerCalculator
             distanceFromWall =
                 CalculateDistance(sprinklePoint,
                     roomTopCornersWithSameHeight[3], roomTopCornersWithSameHeight[0]);
-            if (distanceFromWall < MIN_DISTANCE)
+            if (distanceFromWall < (MIN_DISTANCE - Threshold))
             {
                 return false;
             }

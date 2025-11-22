@@ -11,6 +11,7 @@ namespace SprinklerCalculator
     public class SprinklerGenerator
     {
 
+        private const int MIN_DISTANCE = 2500;
         private readonly List<Point> _roomTopCorners;
         private readonly List<Pipe> _pipes;
 
@@ -30,14 +31,15 @@ namespace SprinklerCalculator
             //take the lower z value of the room top corners as the ceiling height
             double ceilingHeight = _roomTopCorners.Min(corner => corner.Z);
 
-            List<Point> possibleSprinkleGrid = new List<Point>();
-            CalculatePossibleSprinkleGrid(ceilingHeight, possibleSprinkleGrid);
-
             List<Point> roomTopCornersWithSameHeight = new List<Point>();
             foreach (Point p in _roomTopCorners)
             {
                 roomTopCornersWithSameHeight.Add(new Point(p.X, p.Y, ceilingHeight));
             }
+
+            List<Point> possibleSprinkleGrid = new List<Point>();
+            CalculatePossibleSprinkleGrid(ceilingHeight, possibleSprinkleGrid,
+                roomTopCornersWithSameHeight);
 
             //filter possible sprinkle points that are inside the room polygon
             //and at a minimun distance (2500mm) from walls
@@ -103,19 +105,52 @@ namespace SprinklerCalculator
             }
         }
 
-        private void CalculatePossibleSprinkleGrid(double ceilingHeight, List<Point> possibleSparkelGrid)
+        private void CalculatePossibleSprinkleGrid(double ceilingHeight, 
+            List<Point> possibleSparkelGrid,
+            List<Point> roomTopCornersWithSameHeight)
         {
-            double minX = _roomTopCorners.Min(corner => corner.X);
-            double maxX = _roomTopCorners.Max(corner => corner.X);
-            double minY = _roomTopCorners.Min(corner => corner.Y);
-            double maxY = _roomTopCorners.Max(corner => corner.Y);
-            for (double x = minX; x <= maxX; x += 2500) //2500 mm grid
+
+            //part 1: along one line from corner 1 to corner 2   
+            List<Point> pointsAlongOneLine = new List<Point>();
+            Point directionVector = Point.GetDirectionVector(
+                roomTopCornersWithSameHeight[1], roomTopCornersWithSameHeight[0], MIN_DISTANCE
+                );
+            decimal lineLength = (decimal)Point
+                .CalculateDistance(
+                    roomTopCornersWithSameHeight[1],
+                    roomTopCornersWithSameHeight[0]);
+            decimal iterationsNeeded = lineLength / MIN_DISTANCE + 1;
+            Point startPoint = roomTopCornersWithSameHeight[1];
+            pointsAlongOneLine.Add(startPoint);
+            for (int i = 0; i < iterationsNeeded; i++)
             {
-                for (double y = minY; y <= maxY; y += 2500)
+                startPoint = Point.Add(startPoint, directionVector);
+                pointsAlongOneLine.Add(startPoint);
+            }
+            foreach(Point point in pointsAlongOneLine)
+            {
+                possibleSparkelGrid.Add(point);
+            }
+
+            //part 2
+            directionVector = Point.GetDirectionVector(
+                roomTopCornersWithSameHeight[1], roomTopCornersWithSameHeight[2], MIN_DISTANCE
+                );
+            lineLength = (decimal)Point
+                .CalculateDistance(
+                    roomTopCornersWithSameHeight[1],
+                    roomTopCornersWithSameHeight[2]);
+            iterationsNeeded = lineLength / MIN_DISTANCE + 1;
+            foreach (Point point in pointsAlongOneLine)
+            {
+                startPoint = point;
+                for (int i = 0; i < iterationsNeeded; i++)
                 {
-                    possibleSparkelGrid.Add(new Point(x, y, ceilingHeight));
+                    startPoint = Point.Add(startPoint, directionVector);
+                    possibleSparkelGrid.Add(startPoint);
                 }
             }
+
         }
 
         private void Validate()
