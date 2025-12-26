@@ -1,5 +1,4 @@
-# Tandm
-Tandm Programming Challenge
+Programming Challenge
 
 Your mission, should you choose to accept it, is to calculate the number of sprinklers required to fill a room, their positions on the room’s ceiling and then connect each sprinkler to the nearest water pipe.
 
